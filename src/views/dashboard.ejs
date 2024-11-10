@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/styles/dashboard.css">
+</head>
+<body>
+    <div class="header_container">
+        <div class="icon"><img src="/images/logo.png" alt="logo"></div>
+        <div class="navigation">
+            <a class="btn" href="#">Dashboard</a>
+            <a class="btn" href="#">Profile</a>
+            <a class="btn" href="#">Contact Us</a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
+    </div>
+
+    <div class="info_container">
+        <div class="data"><strong>Name:</strong> Abhinav Vishwakarma</div>
+        <div class="data"><strong>Admission No.:</strong> 2023B1531060</div>
+        <div class="data"><strong>Room No.:</strong> S-22</div>
+        <div class="data"><strong>Block:</strong> VKB</div>
+    </div>
+
+    <div class="main_container">
+        <div class="dashboard_container">
+            <div class="option_card" id="leave_application">Leave Application</div>
+            <div class="option_card" id="qr_gate_pass">QR-Gate Pass</div>
+            <div class="option_card" id="complaints">Complaints</div>
+            <div class="option_card" id="monthly_spent">Monthly Spent</div>
+        </div>
+
+        <div id="content_area" class="content_area">
+            <p>Select an option to view content here.</p>
+        </div>
+    </div>
+
+    <div id="content_overlay" class="content_overlay">
+        <button id="close_overlay" class="close_overlay">Close</button>
+        <div id="overlay_content" class="overlay_content">
+            <p>Content will appear here.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 ABESEC Hostel Support. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Help</a>
+        </div>
+    </footer>
+
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

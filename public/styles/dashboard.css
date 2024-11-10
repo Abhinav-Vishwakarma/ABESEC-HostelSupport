@@ -1,0 +1,237 @@
+/* Root Theme Variables */
+:root {
+    --background-color: #f4f4f9;
+    --text-color: #333;
+    --header-bg-color: #333;
+    --header-text-color: white;
+    --card-bg-color: #007bff;
+    --card-hover-bg-color: #0056b3;
+    --overlay-bg-color: rgba(0, 0, 0, 0.8);
+    --footer-bg-color: #333;
+    --footer-text-color: #ccc;
+    --transition-duration: 0.3s;
+}
+
+/* Light Theme Variables */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+.dark-theme {
+    --background-color: #333;
+    --text-color: #f4f4f9;
+    --header-bg-color: #222;
+    --card-bg-color: #444;
+    --footer-bg-color: #222;
+    --footer-text-color: #aaa;
+}
+
+/* Header Styling */
+.header_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--header-bg-color);
+    color: var(--header-text-color);
+}
+
+.navigation .btn {
+    color: var(--header-text-color);
+    text-decoration: none;
+    padding: 10px;
+}
+
+.theme-toggle {
+    background-color: var(--card-bg-color);
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Info Container Styling */
+.info_container {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: white;
+    margin: 10px 0;
+}
+
+/* Info Container for Mobile (stack items vertically) */
+@media (max-width: 768px) {
+    .info_container {
+        flex-direction: column; /* Stack vertically on mobile */
+        align-items: center;
+    }
+
+    .info_container .data {
+        margin-bottom: 10px;
+    }
+
+    .info_container h4, .info_container h5 {
+        margin: 5px 0;
+    }
+}
+
+/* Main Container for Full-Height Layout */
+.main_container {
+    display: flex;
+    flex: 1;
+    min-height: calc(100vh - 120px); /* Full viewport height minus header/footer */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Sidebar Dashboard Navigation */
+.dashboard_container {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.option_card {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: var(--card-bg-color);
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color var(--transition-duration);
+    animation: slideIn 0.3s ease;
+}
+
+.option_card:hover {
+    background-color: var(--card-hover-bg-color);
+}
+
+/* Dynamic content area */
+.content_area {
+    width: 80%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Full-screen overlay styling for mobile view */
+.content_overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-bg-color);
+    color: white;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay_content {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 90%;
+    text-align: center;
+}
+
+.close_overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Footer styling */
+.footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    text-align: center;
+    padding: 20px 0;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-links a {
+    color: var(--footer-text-color);
+    text-decoration: none;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .main_container {
+        flex-direction: column;
+    }
+
+    .dashboard_container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .option_card {
+        flex: 1 1 48%;
+        margin: 5px;
+        padding: 15px;
+    }
+
+    .content_area {
+        display: none; /* Hidden in mobile by default */
+    }
+
+    .content_overlay {
+        display: flex;
+    }
+
+    .info_container {
+        padding: 10px;
+        text-align: center;
+    }
+    
+    /* Adjust right padding */
+    .main_container {
+        padding-right: 10px;
+    }
+}
+/* Logo Styling */
+.icon img {
+    max-width: 100%;
+    height: auto;
+    max-height: 50px; /* Adjust this value based on your preference */
+    object-fit: contain; /* Ensures that the image scales correctly without distorting */
+}

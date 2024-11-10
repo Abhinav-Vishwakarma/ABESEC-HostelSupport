@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../../public/styles/index.css">
+</head>
+<body>
+    <div class="form_container">
+        <div><h1>Login</h1></div>
+        <form class="form" method="post" action="/api/login">
+            <input type="text" class="inp" placeholder="Addmission Number" name="addmission_no">
+            <input type="tel" class="inp" placeholder="Phone Number" name="phone_no">
+            <div>
+                <label>DOB:</label>
+                <input type="date" class="inp" placeholder="DOB" name="dob">
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
