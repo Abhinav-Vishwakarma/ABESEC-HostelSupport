@@ -1,0 +1,182 @@
+
+/* Form container styling */
+.form_container {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 900px;
+    animation: fadeIn 1s ease-out;
+}
+
+.form_table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.form_table td {
+    padding: 12px;
+    text-align: left;
+    font-size: 16px;
+    vertical-align: top;
+
+}
+
+.form_table td input,
+.form_table td select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+    vertical-align: top;
+}
+
+/* Styling for input and select fields on focus */
+.form_table td input:focus,
+.form_table td select:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 8px rgba(108, 99, 255, 0.3);
+}
+
+/* Styling for table header */
+.form_table tr:first-child td {
+    font-weight: bold;
+    background-color: #f1f1f1;
+}
+
+/* Styling for submit button */
+.form_container button {
+    background-color: #6c63ff;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.form_container button:hover {
+    background-color: #5a54d6;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    /* Form table adjustments */
+    .form_table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    /* Adjusting input and select fields for mobile */
+    .form_table td input,
+    .form_table td select {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    /* Adjusting submit button for mobile */
+    .form_container button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    /* Stacking table rows vertically for smaller screens */
+    .form_table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 0;
+    }
+
+    /* Making inputs more accessible for smaller devices */
+    .form_table td input,
+    .form_table td select {
+        margin-bottom: 10px;
+    }
+
+    /* Text color adjustments for mobile view */
+    .form_table td {
+        color: black; /* Ensure text color is black */
+    }
+
+    .form_container button {
+        color: white; /* Button text remains white */
+    }
+
+    /* Optional: You can also target input fields and labels if needed */
+    input[type="text"],
+    input[type="date"],
+    input[type="time"],
+    select {
+        color: black; /* Ensures inputs and select fields are also black */
+    }
+}
+
+/* Animation for fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Animation for hover effect on buttons */
+.form_container button {
+    animation: buttonHover 0.3s ease-in-out;
+}
+
+@keyframes buttonHover {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Additional styling for selects to make them look better */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #f9f9f9;
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"%3E%3Cpath fill="none" stroke="%23999" stroke-width="1" d="M1 1l4 4 4-4"%3E%3C/path%3E%3C/svg%3E');
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    padding-right: 30px;
+}
+
+/* General styling for form inputs */
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select {
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+select:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 8px rgba(108, 99, 255, 0.3);
+}
+
+input[type="submit"]:hover {
+    background-color: #5a54d6;
+}

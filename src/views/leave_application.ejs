@@ -1,2 +1,73 @@
-<h3>Leave Application</h3>
-<p>This is the leave application content. You can add more details here.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Application</title>
+    <link rel="stylesheet" href="/styles/leave.css">
+
+</head>
+<body>
+    
+        <form id="overlay_content" class="overlay_content form_container" action="/api/apply" method="post">
+            <table class="form_table">
+                <tr>
+                    <td></td>
+                    <td>Date</td>
+                    <td>Time</td>
+                </tr>
+                <tr>
+                    <td>From</td>
+                    <td><input type="date" id="from_date" name="from_date" required></td>
+                    <td><input type="time" id="from_time" name="from_time" required></td>
+                </tr>
+                <tr>
+                    <td>To</td>
+                    <td><input type="date" id="to_date" name="to_date" required></td>
+                    <td><input type="time" id="to_time" name="to_time" required></td>
+                </tr>
+                <tr>
+                    <td>Parent's Mob. no.</td>
+                    <td colspan="2"><input type="tel" id="num" name="num" required></td>
+                </tr>
+                <tr>
+                    <td>Visit to</td>
+                    <td colspan="2">
+                        <select id="visit_to" name="visit_to" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Parents">Parents</option>
+                            <option value="LG">LG</option>
+                            <option value="Relatives">Relatives</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Reason</td>
+                    <td colspan="2"><input type="text" id="reason" name="reason" required></td>
+                </tr>
+                <tr>
+                    <td>Destination Address</td>
+                    <td colspan="2"><input type="text" id="leave_address" name="leave_address" required></td>
+                </tr>
+                <tr>
+                    <td>Relationship</td>
+                    <td colspan="2">
+                        <select id="relationship" name="relationship" required>
+                            <option value="" disabled selected>Select a relationship</option>
+                            <option value="Mother">Mother</option>
+                            <option value="Father">Father</option>
+                            <option value="Uncle">Uncle</option>
+                            <option value="Aunt">Aunt</option>
+                            <option value="Brother">Brother</option>
+                            <option value="Sister">Sister</option>
+                            <option value="Friend">Friend</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <button type="submit">Submit Application</button>
+        </form>
+  
+</body>
+</html>

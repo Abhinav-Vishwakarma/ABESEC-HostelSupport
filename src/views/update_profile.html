@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/styles/leave.css">
+    <style>
+        /* Initial styling for the submit button when disabled */
+        #submitBtn {
+            background-color: grey;
+            color: white;
+            cursor: not-allowed;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        /* Styling for the submit button when enabled */
+        #submitBtn.enabled {
+            background-color: blue;
+            cursor: pointer;
+        }
+        .form_container {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* Style specifically for the address fields */
+        #address,
+        #guardian_address {
+            width: 100%;
+            height: 60px;
+            overflow: auto; /* Enable scrolling if content overflows */
+            resize: vertical; /* Allows vertical resizing */
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const formElements = document.querySelectorAll('.form_container input, .form_container textarea');
+            const editButton = document.getElementById('editButton');
+            const submitButton = document.getElementById('submitBtn');
+
+            let formEdited = false;
+
+            editButton.addEventListener('click', () => {
+                if (editButton.textContent === 'Edit') {
+                    enableEditing();
+                } else {
+                    disableEditing();
+                }
+            });
+
+            function enableEditing() {
+                formElements.forEach(input => input.removeAttribute('disabled'));
+                editButton.textContent = 'Done';
+                submitButton.disabled = true;
+                submitButton.classList.remove('enabled');
+
+                formEdited = false;
+                formElements.forEach(input => {
+                    input.addEventListener('input', handleInputChange);
+                });
+            }
+
+            function disableEditing() {
+                formElements.forEach(input => input.setAttribute('disabled', 'disabled'));
+                editButton.textContent = 'Edit';
+
+                submitButton.disabled = true;
+                submitButton.classList.remove('enabled');
+            }
+
+            function handleInputChange() {
+                if (!formEdited) {
+                    submitButton.disabled = false;
+                    submitButton.classList.add('enabled');
+                    formEdited = true;
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <form class="form_container" action="/api/profile" method="post">
+            <table class="form_table">
+                <tr>
+                    <td>Profile</td>
+                    <td>Details</td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td><label id="name">Abhinav Vishwakarma</label></td>
+                </tr>
+                <tr>
+                    <td>Admission No.:</td>
+                    <td><label id="admission_no">2023B1531060</label></td>
+                </tr>
+                <tr>
+                    <td>Room No.:</td>
+                    <td><label id="room_no">S-22</label></td>
+                </tr>
+                <tr>
+                    <td>Block:</td>
+                    <td><label id="block">VKB</label></td>
+                </tr>
+                <tr>
+                    <td>Father No.:</td>
+                    <td><input type="tel" id="father_no" disabled></td>
+                </tr>
+                <tr>
+                    <td>Mother No.:</td>
+                    <td><input type="tel" id="mother_no" disabled></td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td><textarea id="address" disabled></textarea></td>
+                </tr>
+                <tr>
+                    <td>Local Guardian Name:</td>
+                    <td><input type="text" id="guardian_name" disabled></td>
+                </tr>
+                <tr>
+                    <td>Local Guardian Address:</td>
+                    <td><textarea id="guardian_address" disabled></textarea></td>
+                </tr>
+                <tr>
+                    <td>Local Guardian No.:</td>
+                    <td><input type="tel" id="guardian_no" disabled></td>
+                </tr>
+                <tr>
+                    <td>Student Phone No.:</td>
+                    <td><input type="tel" id="student_phone" disabled></td>
+                </tr>
+                <tr>
+                    <td>Student Email:</td>
+                    <td><input type="email" id="student_email" disabled></td>
+                </tr>
+            </table>
+            <button type="button" id="editButton">Edit</button>
+            <button type="submit" id="submitBtn" disabled>Submit Application</button>
+        </form>
+    </div>
+</body>
+</html>

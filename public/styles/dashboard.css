@@ -42,6 +42,7 @@ body {
     padding: 15px;
     background-color: var(--header-bg-color);
     color: var(--header-text-color);
+    
 }
 
 .navigation .btn {
@@ -164,7 +165,7 @@ body {
     color: var(--footer-text-color);
     text-align: center;
     padding: 20px 0;
-    position: sticky;
+    /* position: sticky; */
     bottom: 0;
     width: 100%;
 }

@@ -31,6 +31,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 case 'monthly_spent':
                     contentUrl = '/content/monthly_spent';
                     break;
+                case 'update_profile':
+                    contentUrl = '/content/update_profile';
+                    break;
                 default:
                     contentUrl = '/content/default';
             }
