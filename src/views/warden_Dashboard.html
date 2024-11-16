@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warden Dashboard</title>
+    <link rel="stylesheet" href="../../public/styles/warden_dashboard.css">
+</head>
+<body>
+    <div class="header_container">
+        <div class="icon"><img src="/images/logo.png" alt="Hostel Logo"></div>
+        <div class="navigation">
+            <a class="btn" id="nav_dashboard" href="#">Dashboard</a>
+            <a class="btn" id="nav_profile" href="#">Profile</a>
+            <a class="btn" id="nav_contact" href="#">Contact Admin</a>
+        </div>
+        <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
+    </div>
+
+    <div class="info_container">
+        <div class="data"><strong>Name:</strong> Warden John Doe</div>
+        <div class="data"><strong>Block:</strong> VKB</div>
+    </div>
+
+    <div class="main_container">
+        <div class="dashboard_container">
+            <div class="option_card" id="view_leave_requests">View Leave Requests</div>
+            <div class="option_card" id="view_complaints">View Complaints</div>
+            <div class="option_card" id="manage_rooms">Manage Rooms</div>
+            <div class="option_card" id="student_records">Student Records</div>
+        </div>
+
+        <div id="content_area" class="content_area">
+            <p>Select an option to view content here.</p>
+        </div>
+    </div>
+
+    <div id="content_overlay" class="content_overlay">
+        <button id="close_overlay" class="close_overlay">Close</button>
+        <div id="overlay_content" class="overlay_content">
+            <p>Content will appear here.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 ABESEC Hostel Support. All rights reserved.</p>
+        <div class="footer-links">
+            <a id="privacy_policy" href="#">Privacy Policy</a>
+            <a id="terms_of_service" href="#">Terms of Service</a>
+            <a id="help_center" href="#">Help</a>
+        </div>
+    </footer>
+
+    <script src="../../public/js/warden_dashboard.js"></script>
+</body>
+</html>

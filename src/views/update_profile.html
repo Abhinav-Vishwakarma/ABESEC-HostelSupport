@@ -43,6 +43,7 @@
 
             let formEdited = false;
 
+            // Toggle edit mode on button click
             editButton.addEventListener('click', () => {
                 if (editButton.textContent === 'Edit') {
                     enableEditing();
@@ -51,31 +52,34 @@
                 }
             });
 
+            // Function to enable form inputs
             function enableEditing() {
-                formElements.forEach(input => input.removeAttribute('disabled'));
-                editButton.textContent = 'Done';
-                submitButton.disabled = true;
-                submitButton.classList.remove('enabled');
+                formElements.forEach(input => input.removeAttribute('disabled')); // Enable inputs
+                editButton.textContent = 'Done'; // Change button text to Done
+                submitButton.disabled = true; // Keep submit button disabled initially
+                submitButton.classList.remove('enabled'); // Remove enabled class
 
-                formEdited = false;
+                formEdited = false; // Reset the formEdited flag
                 formElements.forEach(input => {
-                    input.addEventListener('input', handleInputChange);
+                    input.addEventListener('input', handleInputChange); // Add input event listener
                 });
             }
 
+            // Function to disable form inputs
             function disableEditing() {
-                formElements.forEach(input => input.setAttribute('disabled', 'disabled'));
-                editButton.textContent = 'Edit';
+                formElements.forEach(input => input.setAttribute('disabled', 'disabled')); // Disable inputs
+                editButton.textContent = 'Edit'; // Change button text back to Edit
 
-                submitButton.disabled = true;
-                submitButton.classList.remove('enabled');
+                submitButton.disabled = true; // Disable submit button
+                submitButton.classList.remove('enabled'); // Remove enabled class
             }
 
+            // Handle input changes and enable submit button
             function handleInputChange() {
                 if (!formEdited) {
-                    submitButton.disabled = false;
-                    submitButton.classList.add('enabled');
-                    formEdited = true;
+                    submitButton.disabled = false; // Enable submit button
+                    submitButton.classList.add('enabled'); // Add enabled class
+                    formEdited = true; // Set formEdited flag to true
                 }
             }
         });

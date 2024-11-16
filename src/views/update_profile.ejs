@@ -35,51 +35,6 @@
             resize: vertical; /* Allows vertical resizing */
         }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const formElements = document.querySelectorAll('.form_container input, .form_container textarea');
-            const editButton = document.getElementById('editButton');
-            const submitButton = document.getElementById('submitBtn');
-
-            let formEdited = false;
-
-            editButton.addEventListener('click', () => {
-                if (editButton.textContent === 'Edit') {
-                    enableEditing();
-                } else {
-                    disableEditing();
-                }
-            });
-
-            function enableEditing() {
-                formElements.forEach(input => input.removeAttribute('disabled'));
-                editButton.textContent = 'Done';
-                submitButton.disabled = true;
-                submitButton.classList.remove('enabled');
-
-                formEdited = false;
-                formElements.forEach(input => {
-                    input.addEventListener('input', handleInputChange);
-                });
-            }
-
-            function disableEditing() {
-                formElements.forEach(input => input.setAttribute('disabled', 'disabled'));
-                editButton.textContent = 'Edit';
-
-                submitButton.disabled = true;
-                submitButton.classList.remove('enabled');
-            }
-
-            function handleInputChange() {
-                if (!formEdited) {
-                    submitButton.disabled = false;
-                    submitButton.classList.add('enabled');
-                    formEdited = true;
-                }
-            }
-        });
-    </script>
 </head>
 <body>
     <div class="container">
@@ -142,5 +97,8 @@
             <button type="submit" id="submitBtn" disabled>Submit Application</button>
         </form>
     </div>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="/js/dashboard.js"></script>
 </body>
 </html>
