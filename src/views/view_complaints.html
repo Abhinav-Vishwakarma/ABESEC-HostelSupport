@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Complaints</title>
+    <link rel="stylesheet" href="../../public/styles/leave.css">
+    <style>
+        /* Responsive styling */
+        .container {
+            margin: auto;
+            padding: 10px;
+            max-width: 90%;
+        }
+
+        .form_table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .form_table th, .form_table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .form_table th {
+            cursor: pointer;
+            background-color: #f4f4f4;
+        }
+
+        @media (max-width: 600px) {
+            .form_table, .form_table thead, .form_table tbody, .form_table th, .form_table td, .form_table tr {
+                display: block;
+            }
+            .form_table thead tr {
+                display: none;
+            }
+            .form_table tr {
+                margin-bottom: 15px;
+            }
+            .form_table td {
+                display: flex;
+                justify-content: space-between;
+                padding: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Complaint Management</h1>
+        <div>
+            <label for="filterCategory">Filter by Category:</label>
+            <select id="filterCategory" onchange="filterComplaints()">
+                <option value="All">All</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="Noise">Noise</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <form id="complaintForm" class="form_container" action="/api/update_complaints" method="post">
+            <table class="form_table">
+                <thead>
+                    <tr>
+                        <th onclick="sortComplaints('id')">Complaint ID</th>
+                        <th onclick="sortComplaints('room')">Room Number</th>
+                        <th onclick="sortComplaints('madeBy')">Made By</th>
+                        <th onclick="sortComplaints('description')">Complaint Description</th>
+                        <th onclick="sortComplaints('date')">Date</th>
+                        <th onclick="sortComplaints('category')">Category</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="complaintTableBody">
+                    <!-- Dynamic rows will be inserted here -->
+                </tbody>
+            </table>
+            <button type="submit">Update Complaints</button>
+        </form>
+    </div>
+
+    <script>
+        // Sample complaint data with categories
+        const complaints = [
+            { id: 101, room: "101A", madeBy: "John Doe", description: "Broken light in the corridor", date: "2024-11-15", category: "Electrical", status: "Accepted" },
+            { id: 102, room: "205", madeBy: "Jane Smith", description: "Water leakage in the bathroom", date: "2024-11-16", category: "Plumbing", status: "In Progress" },
+            { id: 103, room: "304B", madeBy: "Alice Johnson", description: "Noisy fan in Room 205", date: "2024-11-17", category: "Noise", status: "Closed" },
+            { id: 104, room: "412C", madeBy: "Bob Brown", description: "Blocked sink in the pantry", date: "2024-11-17", category: "Plumbing", status: "Accepted" }
+        ];
+
+        let filteredComplaints = [...complaints];
+
+        // Render complaints dynamically
+        const renderComplaints = () => {
+            const tableBody = document.getElementById("complaintTableBody");
+            tableBody.innerHTML = filteredComplaints.map(complaint => `
+                <tr>
+                    <td>${complaint.id}</td>
+                    <td>${complaint.room}</td>
+                    <td>${complaint.madeBy}</td>
+                    <td>${complaint.description}</td>
+                    <td>${complaint.date}</td>
+                    <td>${complaint.category}</td>
+                    <td>
+                        <select name="status_${complaint.id}" required>
+                            <option value="Accepted" ${complaint.status === "Accepted" ? "selected" : ""}>Accepted</option>
+                            <option value="In Progress" ${complaint.status === "In Progress" ? "selected" : ""}>In Progress</option>
+                            <option value="Closed" ${complaint.status === "Closed" ? "selected" : ""}>Closed</option>
+                        </select>
+                    </td>
+                </tr>
+            `).join('');
+        };
+
+        // Filter complaints by category
+        const filterComplaints = () => {
+            const category = document.getElementById("filterCategory").value;
+            filteredComplaints = category === "All" ? [...complaints] : complaints.filter(c => c.category === category);
+            renderComplaints();
+        };
+
+        // Sort complaints dynamically
+        const sortComplaints = (key) => {
+            filteredComplaints.sort((a, b) => a[key] > b[key] ? 1 : -1);
+            renderComplaints();
+        };
+
+        // Render complaints on page load
+        renderComplaints();
+    </script>
+</body>
+</html>

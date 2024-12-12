@@ -45,8 +45,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (window.innerWidth <= 768) {
                         overlayContent.innerHTML = html; // Inject HTML into overlay
                         contentOverlay.style.display = "flex";
+                        initUpdateProfileForm(); // Initialize the form functionality for mobile
                     } else {
                         contentArea.innerHTML = html; // Inject HTML into content area
+                        initUpdateProfileForm(); // Initialize the form functionality for desktop
                     }
                 })
                 .catch(error => console.error('Error fetching content:', error));
@@ -58,51 +60,37 @@ document.addEventListener("DOMContentLoaded", function() {
         contentOverlay.style.display = "none";
     });
 
+    // Function to initialize the "Update Profile" form after it is loaded
+    function initUpdateProfileForm() {
+        const updateProfileForm = document.getElementById("update_profile_form");
 
+        if (updateProfileForm) {
+            const submitButton = updateProfileForm.querySelector("#submit_button");
+            
+            // Add event listener for form submission
+            if (submitButton) {
+                submitButton.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default form submission behavior
+                    
+                    // Handle form submission logic (e.g., validation, AJAX request)
+                    const formData = new FormData(updateProfileForm);
+                    console.log('Form data:', formData);
 
-    const formElements = document.querySelectorAll('.form_container input, .form_container textarea');
-    const editButton = document.getElementById('editButton');
-    const submitButton = document.getElementById('submitBtn');
+                    // You can add AJAX submission logic here, e.g., using fetch() or XMLHttpRequest
+                    // fetch('/submit_form', { method: 'POST', body: formData })
+                    //     .then(response => response.json())
+                    //     .then(data => console.log(data))
+                    //     .catch(error => console.error('Error submitting form:', error));
+                });
+            }
 
-    let formEdited = false;
-
-    // Toggle edit mode on button click
-    editButton.addEventListener('click', () => {
-        if (editButton.textContent === 'Edit') {
-            enableEditing();
-        } else {
-            disableEditing();
-        }
-    });
-
-    // Function to enable form inputs
-    function enableEditing() {
-        formElements.forEach(input => input.removeAttribute('disabled')); // Enable inputs
-        editButton.textContent = 'Done'; // Change button text to Done
-        submitButton.disabled = true; // Keep submit button disabled initially
-        submitButton.classList.remove('enabled'); // Remove enabled class
-
-        formEdited = false; // Reset the formEdited flag
-        formElements.forEach(input => {
-            input.addEventListener('input', handleInputChange); // Add input event listener
-        });
-    }
-
-    // Function to disable form inputs
-    function disableEditing() {
-        formElements.forEach(input => input.setAttribute('disabled', 'disabled')); // Disable inputs
-        editButton.textContent = 'Edit'; // Change button text back to Edit
-
-        submitButton.disabled = true; // Disable submit button
-        submitButton.classList.remove('enabled'); // Remove enabled class
-    }
-
-    // Handle input changes and enable submit button
-    function handleInputChange() {
-        if (!formEdited) {
-            submitButton.disabled = false; // Enable submit button
-            submitButton.classList.add('enabled'); // Add enabled class
-            formEdited = true; // Set formEdited flag to true
-        }
+            // Add any additional form-related event listeners (e.g., input validation) here
+            const inputs = updateProfileForm.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    input.classList.remove('error'); // Remove error styles on focus
+                });
+            });
+        }s
     }
 });

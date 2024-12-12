@@ -29,6 +29,11 @@ app.get('/', (req, res) => {
   res.render('login'); // Ensure you have a 'login.ejs' file in 'src/views'
 });
 
+app.get('/warden_dashboard', (req, res) => {
+  res.render('warden_Dashboard'); // Ensure you have a 'login.ejs' file in 'src/views'
+});
+
+
 
 //dashboard
 app.post("/api/login",(req,res)=>{
